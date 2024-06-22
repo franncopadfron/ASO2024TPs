@@ -1,0 +1,47 @@
+
+
+
+1. **¿Qué se puede notar con respecto al tiempo de ejecución? ¿Es predecible?**
+   - El tiempo de ejecución no es predecible debido a las variaciones en la carga de CPU y la velocidad de la máquina en la que se ejecuta el programa. Cada ejecución puede resultar en tiempos diferentes.
+
+2. **Nombrar un proceso o función de la vida real que puede ser considerado un proceso de “máxima velocidad posible” que depende casi exclusivamente de la velocidad de la máquina que los ejecuta.**
+   - Un ejemplo es el ordenamiento de una lista grande de números. La velocidad de este proceso depende en gran medida de la capacidad de procesamiento del hardware.
+
+3. **Nombrar un proceso o función de la vida real que puede ser considerado un proceso de “velocidad de respuesta no dependiente de la velocidad de procesamiento” o que sea de naturaleza impredecible o externa.**
+   - Un ejemplo es leer un archivo externo desde un disco duro. La velocidad puede depender de factores externos como la velocidad del disco, la interfaz de conexión, o incluso la disponibilidad del archivo.
+
+
+
+1. **¿Qué se puede notar con respecto al tiempo de ejecución? ¿Se mejoró el tiempo de respuesta con respecto al mismo programa sin hilos?**
+   - El tiempo de ejecución mejora ya que las tareas se ejecutan en paralelo, aprovechando mejor los recursos del sistema.
+
+2. **¿Completan las funciones su ejecución en el orden establecido?**
+   - No necesariamente completan en el orden establecido debido a la naturaleza concurrente de los hilos. Los hilos pueden finalizar en diferente orden en cada ejecución.
+
+3. **Nombrar un escenario real donde el multi-hilado puede mejorar considerablemente el tiempo de respuesta de un sistema.**
+   - Un ejemplo es la carga de una página web en un navegador. Diferentes partes de la página (imágenes, scripts, estilos) pueden ser cargadas en paralelo, mejorando el tiempo de carga total de la página.
+
+### 3. Condición de carrera (Race Condition)
+
+**Ejercicio:**
+
+
+1. **¿Qué se puede notar con respecto al tiempo de ejecución?**
+   - El tiempo de ejecución puede ser similar, pero la falta de sincronización puede causar variabilidad en el resultado final del acumulador.
+
+2. **¿Qué sucede con el valor final del acumulador?**
+   - El valor final del acumulador no es consistente y puede variar entre diferentes ejecuciones debido a la condición de carrera.
+
+3. **¿Por qué sucede esto?**
+   - Esto sucede porque los hilos `sumador` y `restador` acceden y modifican la variable `acumulador` de manera concurrente sin ningún mecanismo de sincronización, lo que lleva a actualizaciones incorrectas y resultados inconsistentes.
+
+4. **¿Cómo se puede corregir esta condición de carrera sin dejar de utilizar hilos?**
+   - Se puede corregir utilizando mecanismos de sincronización como `Locks` o `Semaphores` para asegurar que solo un hilo accede a la variable compartida a la vez.
+
+
+
+1. **¿Qué sucede con el valor final del acumulador?**
+   - El valor final del acumulador se mantiene consistente (debería ser 0) al utilizar el candado para controlar el acceso a la variable compartida.
+
+2. **¿Qué se puede notar con respecto al tiempo de ejecución?**
+   - El tiempo de ejecución puede ser un poco más largo debido a la sobrecarga introducida por el mecanismo de sincronización, pero el resultado es correcto y predecible.
