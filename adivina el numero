@@ -1,0 +1,27 @@
+#generar un numero aleatorio entre 1 y 100
+numero_secreto=$((RANDOM % 100 + 1))
+
+intento=0
+
+
+echo "adivinar el numero ( entre 1 y 100):"
+
+
+while true; do
+
+	read -p"introduce tu numero:" intento
+ 
+
+	if ¡[[ "intento" =~ ^[0-9]]; then
+		echo "ingrese un  numero valido"
+			continue
+		fi
+			if[ "$intento" -lt "numero_secreto" ];then 
+				echo " ¡felicidades¡ has adivinado."
+			break
+			elif["$inetento"-lt "$numero_secreto"];then
+			echo"demasiado bajo. intenta nuevamente."
+			else
+				echo" demasiado alto.intenta nuevamente,"
+		fi
+		done
